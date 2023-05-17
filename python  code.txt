@@ -1,0 +1,275 @@
+Q1)
+def fuzzy_union(set1, set2):
+    union_set = {}
+
+    # Copy set1 into union_set
+    for element, membership in set1.items():
+        union_set[element] = membership
+
+    # Add elements from set2 to union_set
+    for element, membership in set2.items():
+        if element in union_set:
+            union_set[element] = max(union_set[element], membership)
+        else:
+            union_set[element] = membership
+
+    return union_set
+
+
+# Example usage
+set1 = {'a': 0.2, 'b': 0.5, 'c': 0.8}
+set2 = {'b': 0.7, 'd': 0.4, 'e': 0.6}
+
+union = fuzzy_union(set1, set2)
+print("Union of the two fuzzy sets:")
+print(union)
+
+
+
+Q2)
+def fuzzy_intersection(set1, set2):
+    intersection_set = {}
+
+    # Find common elements and their minimum membership degree
+    for element in set1:
+        if element in set2:
+            intersection_set[element] = min(set1[element], set2[element])
+
+    return intersection_set
+
+
+# Example usage
+set1 = {'a': 0.2, 'b': 0.5, 'c': 0.8}
+set2 = {'b': 0.7, 'c': 0.4, 'd': 0.6}
+
+intersection = fuzzy_intersection(set1, set2)
+print("Intersection of the two fuzzy sets:")
+print(intersection)
+
+
+
+Q3)
+def fuzzy_set_difference(set1, set2):
+    difference_set = {}
+
+    # Find elements in set1 that are not in set2
+    for element in set1:
+        if element not in set2:
+            difference_set[element] = set1[element]
+
+    return difference_set
+
+
+# Example usage
+set1 = {'a': 0.2, 'b': 0.5, 'c': 0.8}
+set2 = {'b': 0.7, 'c': 0.4, 'd': 0.6}
+
+difference = fuzzy_set_difference(set1, set2)
+print("Set difference of the two fuzzy sets:")
+print(difference)
+
+
+
+Q4)
+def fuzzy_set_complement(set1):
+    complement_set = {}
+
+    # Calculate the complement of set1
+    for element, membership in set1.items():
+        complement_set[element] = 1 - membership
+
+    return complement_set
+
+
+# Example usage
+set1 = {'a': 0.2, 'b': 0.5, 'c': 0.8}
+
+complement = fuzzy_set_complement(set1)
+print("Complement of the fuzzy set:")
+print(complement)
+
+
+Q5)
+def is_normal_fuzzy_set(fuzzy_set):
+    for membership in fuzzy_set.values():
+        if membership != 0 and membership != 1:
+            return False
+    return True
+
+
+# Example usage
+fuzzy_set = {'a': 0.2, 'b': 0.5, 'c': 1.0}
+
+if is_normal_fuzzy_set(fuzzy_set):
+    print("The fuzzy set is normal.")
+else:
+    print("The fuzzy set is subnormal.")
+
+
+
+Q6)
+def find_core_member(fuzzy_set):
+    core_members = []
+    
+    for member, membership in fuzzy_set.items():
+        if membership == 1:
+            core_members.append(member)
+    
+    return core_members
+
+
+# Example usage
+fuzzy_set = {'a': 0.2, 'b': 1.0, 'c': 0.8, 'd': 1.0}
+
+core_members = find_core_member(fuzzy_set)
+
+if len(core_members) > 0:
+    print("The member(s) with a core in the fuzzy set:")
+    for member in core_members:
+        print(member)
+else:
+    print("The fuzzy set does not have any member with a core.")
+
+
+Q7)
+def find_support(fuzzy_set):
+    support = 0
+
+    for membership in fuzzy_set.values():
+        if membership != 0:
+            support += 1
+
+    return support
+
+
+# Example usage
+fuzzy_set = {'a': 0.2, 'b': 0.5, 'c': 0.0, 'd': 0.8}
+
+support = find_support(fuzzy_set)
+print("The support of the fuzzy set is:", support)
+
+
+Q8)
+def find_alpha_cut(fuzzy_set, alpha):
+    alpha_cut_set = {}
+
+    for element, membership in fuzzy_set.items():
+        if membership >= alpha:
+            alpha_cut_set[element] = membership
+
+    return alpha_cut_set
+
+
+# Example usage
+fuzzy_set = {'a': 0.2, 'b': 0.5, 'c': 0.8, 'd': 0.4, 'e': 0.7}
+alpha_value = 0.6
+
+alpha_cut = find_alpha_cut(fuzzy_set, alpha_value)
+print("Fuzzy set with alpha-cut of", alpha_value)
+print(alpha_cut)
+
+
+Q9)
+def find_height(fuzzy_set):
+    height = 0.0
+
+    for membership in fuzzy_set.values():
+        if membership > height:
+            height = membership
+
+    return height
+
+
+# Example usage
+fuzzy_set = {'a': 0.2, 'b': 0.5, 'c': 0.8, 'd': 0.4, 'e': 0.7}
+
+height = find_height(fuzzy_set)
+print("The height of the fuzzy set is:", height)
+
+
+Q10)
+def apply_linguistic_modifier(fuzzy_set, modifier_func):
+    modified_set = {}
+
+    for element, membership in fuzzy_set.items():
+        modified_membership = modifier_func(membership)
+        modified_set[element] = modified_membership
+
+    return modified_set
+
+
+# Example usage
+tall = {'0.8': 0.8, '0.9': 0.9, '0.7': 0.7, '0.6': 0.6}
+
+# Applying the 'very' modifier by squaring the membership degrees
+very_tall = apply_linguistic_modifier(tall, lambda x: x ** 2)
+
+print("Fuzzy set for 'very tall':")
+print(very_tall)
+
+
+Q11)
+def apply_linguistic_modifier(fuzzy_set, modifier_func):
+    modified_set = {}
+
+    for element, membership in fuzzy_set.items():
+        modified_membership = modifier_func(membership)
+        modified_set[element] = modified_membership
+
+    return modified_set
+
+
+# Example usage
+smart = {'0.1': 0.1, '0.4': 0.4, '0.2': 0.2, '0.8': 0.8, '0.7': 0.7}
+
+# Applying the 'slightly' modifier by multiplying the membership degrees by 0.5
+slightly_smart = apply_linguistic_modifier(smart, lambda x: x * 0.5)
+
+print("Fuzzy set for 'slightly smart':")
+print(slightly_smart)
+
+
+Q12)
+def apply_linguistic_modifier(fuzzy_set, modifier_func):
+    modified_set = {}
+
+    for element, membership in fuzzy_set.items():
+        modified_membership = modifier_func(membership)
+        modified_set[element] = modified_membership
+
+    return modified_set
+
+
+# Example usage
+fat = {'0.1': 0.1, '0.4': 0.4, '0.2': 0.2, '0.8': 0.8, '0.7': 0.7}
+
+# Applying the 'very very' modifier by raising the membership degrees to the power of 3
+very_very_fat = apply_linguistic_modifier(fat, lambda x: x ** 3)
+
+print("Fuzzy set for 'very very fat':")
+print(very_very_fat)
+
+
+Q13)
+def apply_linguistic_modifier(fuzzy_set, modifier_func):
+    modified_set = {}
+
+    for element, membership in fuzzy_set.items():
+        modified_membership = modifier_func(membership)
+        modified_set[element] = modified_membership
+
+    return modified_set
+
+
+# Example usage
+dedicated = {'0.4': 0.4, '0.3': 0.3, '0': 0, '1': 1}
+
+# Applying the 'not at all' modifier by subtracting the membership degrees from 1
+not_at_all_dedicated = apply_linguistic_modifier(dedicated, lambda x: 1 - x)
+
+print("Fuzzy set for 'not at all dedicated':")
+print(not_at_all_dedicated)
+
+
+Q14)
+
