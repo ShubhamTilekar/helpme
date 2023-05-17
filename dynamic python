@@ -1,12 +1,13 @@
-def fuzzy_intersection(set1, set2):
-    intersection_set = {}
+Q1)
+def fuzzy_union(set1, set2):
+    union_set = {}
 
-    # Find common elements and their minimum membership degree
+   
     for element in set1:
         if element in set2:
-            intersection_set[element] = min(set1[element], set2[element])
+            union_set[element] = max(set1[element], set2[element])
 
-    return intersection_set
+    return union_set
 
 # Accept input from the user for set1
 set1 = {}
@@ -26,9 +27,9 @@ while True:
     membership_degree = float(input("Enter the membership degree for '{}' in set2: ".format(element)))
     set2[element] = membership_degree
 
-# Perform fuzzy intersection
-intersection = fuzzy_intersection(set1, set2)
+# Perform fuzzy union
+union = fuzzy_union(set1, set2)
 
-# Print the intersection set
+# Print the union set
 print("Intersection of the two fuzzy sets:")
-print(intersection)
+print(union)
