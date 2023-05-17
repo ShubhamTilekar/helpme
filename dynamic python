@@ -1,36 +1,34 @@
-def fuzzy_union(set1, set2):
-    # Find the minimum membership values between the two sets
-    union_set = [min(set1[i], set2[i]) for i in range(len(set1))]
-    return union_set
+def fuzzy_intersection(set1, set2):
+    intersection_set = {}
 
-def main():
-    # Get the number of elements in the fuzzy sets
-    n = int(input("Enter the number of elements in the fuzzy sets: "))
+    # Find common elements and their minimum membership degree
+    for element in set1:
+        if element in set2:
+            intersection_set[element] = min(set1[element], set2[element])
 
-    # Initialize the fuzzy sets
-    set1 = []
-    set2 = []
+    return intersection_set
 
-    # Get the membership values for the first fuzzy set
-    print("Enter the membership values for the first fuzzy set:")
-    for i in range(n):
-        value = float(input(f"Element {i + 1}: "))
-        set1.append(value)
+# Accept input from the user for set1
+set1 = {}
+while True:
+    element = input("Enter an element for set1 (or 'q' to quit): ")
+    if element == "q":
+        break
+    membership_degree = float(input("Enter the membership degree for '{}' in set1: ".format(element)))
+    set1[element] = membership_degree
 
-    # Get the membership values for the second fuzzy set
-    print("Enter the membership values for the second fuzzy set:")
-    for i in range(n):
-        value = float(input(f"Element {i + 1}: "))
-        set2.append(value)
+# Accept input from the user for set2
+set2 = {}
+while True:
+    element = input("Enter an element for set2 (or 'q' to quit): ")
+    if element == "q":
+        break
+    membership_degree = float(input("Enter the membership degree for '{}' in set2: ".format(element)))
+    set2[element] = membership_degree
 
-    # Calculate the union of the fuzzy sets
-    union_set = fuzzy_union(set1, set2)
+# Perform fuzzy intersection
+intersection = fuzzy_intersection(set1, set2)
 
-    # Display the union set
-    print("The union of the fuzzy sets is:")
-    for i, value in enumerate(union_set):
-        print(f"Element {i + 1}: {value}")
-
-
-if __name__ == '__main__':
-    main()
+# Print the intersection set
+print("Intersection of the two fuzzy sets:")
+print(intersection)
