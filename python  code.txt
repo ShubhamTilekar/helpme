@@ -272,4 +272,41 @@ print(not_at_all_dedicated)
 
 
 Q14)
+def alpha_cut(matrix, alpha):
+    alpha_cut_matrix = []
+
+    for row in matrix:
+        alpha_cut_row = [1 if entry >= alpha else 0 for entry in row]
+        alpha_cut_matrix.append(alpha_cut_row)
+
+    return alpha_cut_matrix
+
+
+# Accepting matrix from the user
+rows = int(input("Enter the number of rows: "))
+cols = int(input("Enter the number of columns: "))
+
+matrix = []
+for i in range(rows):
+    row = []
+    for j in range(cols):
+        entry = float(input(f"Enter element at position ({i+1},{j+1}): "))
+        row.append(entry)
+    matrix.append(row)
+
+# Calculating alpha-cut relations
+alpha_values = [1, 0.5, 0.8, 0.3]
+alpha_cut_relations = {}
+
+for alpha in alpha_values:
+    alpha_cut_matrix = alpha_cut(matrix, alpha)
+    alpha_cut_relations[alpha] = alpha_cut_matrix
+
+# Printing the alpha-cut relations
+for alpha, relation in alpha_cut_relations.items():
+    print(f"α-cut relation for α={alpha}:")
+    for row in relation:
+        print(row)
+    print()
+
 
