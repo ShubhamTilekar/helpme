@@ -1,4 +1,4 @@
-Q1)
+Q1)Union--------------------------------------------------------------------------------------------------------------------------------
 def fuzzy_union(set1, set2):
     union_set = {}
 
@@ -35,7 +35,7 @@ print("Intersection of the two fuzzy sets:")
 print(union)
 
 
-Q2)
+Q2)Intersection-------------------------------------------------------------------------------------------------------------------------
 def fuzzy_intersection(set1, set2):
     intersection_set = {}
 
@@ -72,7 +72,7 @@ print("Intersection of the two fuzzy sets:")
 print(intersection)
 
 
-Q3)
+Q3)Difference-------------------------------------------------------------------------------------------------------
 def fuzzy_set_difference(set1, set2):
     difference_set = {}
 
@@ -110,7 +110,7 @@ print("Set difference of the two fuzzy sets:")
 print(difference)
 
 
-Q4)
+Q4)Complement-------------------------------------------------------------------------------------------------------------------------
 def fuzzy_set_complement(set1):
     complement_set = {}
 
@@ -152,7 +152,7 @@ print(complement_set1)
 print("Complement of set2:")
 print(complement_set2)
 
-Q5)
+Q5)Normal or Not----------------------------------------------------------------------------------------------------
 def is_normal_fuzzy_set(fuzzy_set):
     max_membership_degree = max(fuzzy_set.values())
     return max_membership_degree == 1.0
@@ -180,7 +180,7 @@ elif is_subnormal_fuzzy_set(fuzzy_set):
 else:
     print("The fuzzy set is neither normal nor subnormal.")
 
-Q6)
+Q6)COre------------------------------------------------------------------------------------------------------------------------------------------
 def find_fuzzy_set_core(fuzzy_set):
     core = []
     for member, degree in fuzzy_set.items():
@@ -210,7 +210,7 @@ else:
     print("The fuzzy set does not have a core.")
 
 
-Q7)
+Q7)support---------------------------------------------------------------------------------------------
 def find_fuzzy_set_support(fuzzy_set):
     support = []
     for member, degree in fuzzy_set.items():
@@ -240,7 +240,7 @@ else:
     print("The fuzzy set does not have any support.")
 
 
-Q8)
+Q8)set alphacut----------------------------------------------------------
 def find_fuzzy_set_alpha_cut(fuzzy_set, alpha):
     alpha_cut_set = {}
     for member, degree in fuzzy_set.items():
@@ -269,7 +269,7 @@ print("The fuzzy set with the alpha-cut:")
 print(alpha_cut)
 
 
-Q9)
+Q9)set height---------------------------------------------------------------------------------------------------------------------------
 def find_fuzzy_set_height(fuzzy_set):
     max_membership_degree = max(fuzzy_set.values())
     return max_membership_degree
@@ -291,7 +291,7 @@ height = find_fuzzy_set_height(fuzzy_set)
 print("The height of the fuzzy set:", height)
 
 
-Q10)
+Q10)tall fuzzy set----------------------------------------------------------------------------------------
 def find_very_tall_fuzzy_set(fuzzy_set):
     very_tall_fuzzy_set = {}
     for member, degree in fuzzy_set.items():
@@ -317,7 +317,7 @@ print("The fuzzy set for 'very tall':")
 print(very_tall_set)
 
 
-Q11)
+Q11)slightly smart-----------------------------------------------------------------
 def apply_linguistic_modifier(fuzzy_set, modifier_func):
     modified_set = {}
 
@@ -358,7 +358,7 @@ print("Fuzzy set for 'very very fat':")
 print(very_very_fat)
 
 
-Q13)
+Q13)Dedicated----------------------------------------------------------------------------
 def apply_linguistic_modifier(fuzzy_set, modifier_func):
     modified_set = {}
 
@@ -379,7 +379,7 @@ print("Fuzzy set for 'not at all dedicated':")
 print(not_at_all_dedicated)
 
 
-Q14)
+Q14)alpha cut 3 values-------------------------------------------------------------------------------------------------------------------
 def alpha_cut(matrix, alpha):
     alpha_cut_matrix = []
 
@@ -418,7 +418,7 @@ for alpha, relation in alpha_cut_relations.items():
     print()
 
 
-Q15)
+Q15)alpha cut---------------------------------------------------------------------------------------------------------------------------------
 def alpha_cut(matrix, alpha):
     alpha_cut_matrix = []
 
@@ -460,7 +460,7 @@ for alpha, relation in alpha_cut_relations.items():
 
 
 
-Q)MAX-MIN
+Q)MAX-MIN-----------------------------------------------------------------------------------------------------------------
 def max_min_composition(u1, u2):
     m = len(u1)
     n = len(u1[0])
@@ -504,7 +504,7 @@ if _name_ == "_main_":
 
 
 
-Q)MAX Product
+Q)MAX Product-------------------------------------------------------------------------------------------------
 def max_product_composition(u1, u2):
     m = len(u1)
     n = len(u1[0])
@@ -587,9 +587,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-
-
-
-if _name_ == "_main_":
-    main()
