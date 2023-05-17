@@ -33,3 +33,54 @@ union = fuzzy_union(set1, set2)
 # Print the union set
 print("Intersection of the two fuzzy sets:")
 print(union)
+
+
+Q11
+def create_fuzzy_set():
+    fuzzy_set = {}
+    while True:
+        member = input("Enter a member for the fuzzy set (or 'q' to quit): ")
+        if member == "q":
+            break
+        membership_degree = float(input("Enter the membership degree for '{}' in the fuzzy set: ".format(member)))
+        fuzzy_set[member] = membership_degree
+    return fuzzy_set
+
+
+def create_slightly_smart_fuzzy_set(smart_fuzzy_set):
+    slightly_smart_fuzzy_set = {}
+    for member, degree in smart_fuzzy_set.items():
+        slightly_smart_fuzzy_set[member] = min(degree, 0.5)  # Example: Assuming a maximum degree of 0.5 for 'slightly smart'
+    return slightly_smart_fuzzy_set
+
+
+# Create the fuzzy set for 'smart'
+smart_fuzzy_set = create_fuzzy_set()
+
+# Create the fuzzy set for 'slightly smart' based on the 'smart' fuzzy set
+slightly_smart_fuzzy_set = create_slightly_smart_fuzzy_set(smart_fuzzy_set)
+
+# Print the fuzzy set for 'slightly smart'
+print("Fuzzy set for 'slightly smart':")
+print(slightly_smart_fuzzy_set)
+
+
+Q)FAT
+def create_fuzzy_set(member, membership_degree):
+    fuzzy_set = {}
+    fuzzy_set[member] = membership_degree
+    return fuzzy_set
+
+
+# Define the fuzzy set for 'fat'
+fat_set = create_fuzzy_set('fat', 0.8)
+
+# Compute the fuzzy set for 'very very fat' using the fuzzy set for 'fat'
+very_very_fat_set = {}
+for member, degree in fat_set.items():
+    very_very_fat_set[member] = degree ** 2
+
+# Print the fuzzy sets
+print("Fuzzy set for 'fat':", fat_set)
+print("Fuzzy set for 'very very fat':", very_very_fat_set)
+
