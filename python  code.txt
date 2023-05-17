@@ -308,5 +308,53 @@ for alpha, relation in alpha_cut_relations.items():
     for row in relation:
         print(row)
     print()
+   
+   
+   
+   
+   def complement_set(set):
+    complement = [1 - value for value in set]
+    return complement
+
+def intersection(set1, set2):
+    intersect = [min(set1[i], set2[i]) for i in range(len(set1))]
+    return intersect
+
+def main():
+    # Get the number of elements in the sets
+    n = int(input("Enter the number of elements in the sets: "))
+
+    # Initialize the sets
+    set1 = []
+    set2 = []
+
+    # Get the membership values for the first set
+    print("Enter the membership values for the first set:")
+    for i in range(n):
+        value = float(input(f"Element {i + 1}: "))
+        set1.append(value)
+
+    # Get the membership values for the second set
+    print("Enter the membership values for the second set:")
+    for i in range(n):
+        value = float(input(f"Element {i + 1}: "))
+        set2.append(value)
+
+    # Calculate the complement of each set
+    complement_set1 = complement_set(set1)
+    complement_set2 = complement_set(set2)
+
+    # Apply De Morgan's Law: ~(A ∪ B) = (~A) ∩ (~B)
+    union_complement = intersection(complement_set1, complement_set2)
+
+    # Display the result
+    print("The result of applying De Morgan's Law is:")
+    for i, value in enumerate(union_complement):
+        print(f"Element {i + 1}: {value}")
+
+
+if __name__ == '__main__':
+    main()
+
 
 
